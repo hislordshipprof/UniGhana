@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-import { images } from "@/components/Global/Image";
 import Link from "next/link";
 import Navbar from "@/components/Global/Navbar";
+import { image } from "@/components/Global/Images";
+import { useRouter } from "next/router";
 const landingPage = () => {
+  const router = useRouter();
   const [search, setSearch] = useState("");
+  const handleListView = () => {
+    router.push("/listView");
+  };
   const handleInputChange = (e: any) => {
     setSearch(e.target.value);
   };
@@ -13,71 +18,42 @@ const landingPage = () => {
 
   return (
     <div>
-      <Navbar name="UniGhana" text="login" />
+      {/* <Navbar name="UniGhana" text="login" /> */}
 
-      <section className="heroSection mt-5 pt-5">
-        <div className="hero container mt-5">
-          <div className="container mt-5">
-            <div className="row align-items-center g-5">
-              <div className="col-lg-6 textSection">
-                <h1 className="heroText">
-                  Welcom to <br></br>
-                  <span style={{ color: "#F28705" }}>UniGhana </span>
-                  <span style={{ color: "#022873", margin: 7 }}>
-                    A Tertiary School Platform
-                  </span>
-                </h1>
-                <h3 className="semiTag my-4">
-                  Looking for Best Tertiary School in Ghana?
-                </h3>
-                <p className="heroNote">
-                  SignUp let take you on a tour to the most amazing Tertiary
-                  schools in Ghana..
-                </p>
-
-                <Link
-                  href="/register/signup"
-                  className="btn CTA my-5 py-2 px-4"
+      <section className="mt-5 pt-5">
+        <div className="d-flex flex-column justify-content-center align-items-center">
+          <div className="mb-4">
+            <Image src={image.PokebookImg} alt="placeholder" />
+          </div>
+          <div className="mb-4">
+            <h2 className="text-center">Landing Page</h2>
+          </div>
+          <div className="search-container row">
+            <div className="input-group col-sm-8 col-12 mx-auto">
+              <input
+                type="search"
+                className="form-control border-end-0 border border-0 rounded-pill search-input "
+                value={search}
+                onChange={handleInputChange}
+                placeholder="Enter pokemon name"
+              />
+              <span className="input-group-append">
+                <button
+                  className="btn btn-outline-secondary bg-pink border-bottom-0 border rounded-pill ms-n5 search-btn"
+                  type="button"
+                  onClick={handleListView}
                 >
-                  Register Here
-                  <Image src={images.Arrow} alt="" className="img-fluid" />
-                </Link>
-              </div>
-              <div className="col-lg-6 imgSection">
-                <Image
-                  src={images.school}
-                  priority
-                  alt=""
-                  className="img-fluid"
-                  style={{ bottom: 20, borderRadius: 30 }}
-                />
-              </div>
+                  <i className="fa fa-search search-icon"></i>
+                </button>
+              </span>
             </div>
           </div>
-        </div>
-      </section>
-      <section className="factsSection mt-5 pt-5">
-        <div className="container">
-          <div className="row align-items-center justify-content-center g-5">
-            <div className="col-lg-5 Fact d-flex align-items-center">
-              <Image src={images.Time} alt="" className="img-fluid" />
-              <div className="factDetails mx-3">
-                <h2 className="factTitle ">24/7</h2>
-                <p className="factMeaning"> Customer support </p>
-              </div>
-            </div>
-            <div className="col-lg-5 Fact d-flex align-items-center">
-              <Image
-                src={images.cap}
-                alt=""
-                className="img-fluid"
-                style={{ borderRadius: 30 }}
-              />
-              <div className="factDetails mx-3">
-                <h2 className="factTitle ">60+</h2>
-                <p className="factMeaning">Univercities Available </p>
-              </div>
-            </div>
+          <div className="mb-4">
+            <p className="text-center">
+              <Link href="/listView" className="underline-link">
+                List view
+              </Link>
+            </p>
           </div>
         </div>
       </section>

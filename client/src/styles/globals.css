@@ -39,7 +39,20 @@
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
 }
+@font-face {
+  font-family: "Clash Display Variable";
+  src: url("/fonts/ClashDisplay-Variable.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
+.example-class {
+  font-family: "Clash Display Variable", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
